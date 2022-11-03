@@ -27,5 +27,5 @@ profile = "black"
 no_implicit_optional = true
 
 [[tool.mypy.overrides]]
-module = []
+module = ["matplotlib.*"]
 ignore_missing_imports = true
