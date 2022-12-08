@@ -1,9 +1,9 @@
 from . import geometry_manipulation_functions as gm
-from . import process_functions as pf 
-from . import math_functions as mf 
+from . import process_functions as pf
+from . import math_functions as mf
 from tqdm import tqdm
-import pandas as pd 
-import numpy as np 
+import pandas as pd
+import numpy as np
 import pickle
 import math
 import os
@@ -231,7 +231,7 @@ class Molecule:
         nvac_ijk = pd.DataFrame()
         surf_ijk = []
 
-        v = 0 
+        v = 0
         n = 0
         vc = 0
         nc = 0
@@ -275,6 +275,10 @@ class Molecule:
         #self.surf = surface
         self.sijk = surf_ijk
         #self.vac = vacuum
+        print(len(self.sijk))
+        print(ngs, ngs[0] * ngs[1] * ngs[2])
+        self.surface_mask = np.zeros(ngs, dtype=np.bool_)
+        self.surface_mask[self.sijk] = True
 
     def get_radii(self):
         """ calculates the min and max radius (between COM and surface"""
@@ -364,4 +368,3 @@ class Molecule:
         # max_rad = np.average([abs_xmaxlen, abs_ymaxlen, abs_zmaxlen])
 
         # return min_rad, max_rad
-
